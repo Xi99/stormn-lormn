@@ -1,4 +1,5 @@
 plsIgnore
+config.js
 node_modules/**/*
 .expo/*
 npm-debug.*

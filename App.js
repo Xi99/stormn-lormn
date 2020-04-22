@@ -9,41 +9,58 @@ import {
   FlatList,
 } from "react-native";
 
+import ZipInput from "./components/ZipInput.js";
+import apiToken from "./config";
+
 export default function App() {
-  const [enteredZip, setEnteredZip] = useState("");
-  const [userZips, setUserZips] = useState([]);
+  const [currentTemp, setCurrentTemp] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
+  const [currentCondition, setCurrentCondition] = useState("");
 
-  const zipInputHandler = (enteredZip) => {
-    setEnteredZip(enteredZip);
+  const addZipHandler = (zipcode) => {
+    // now we have the zip code to sent to the API call here
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&units=imperial&appid=${apiToken.OWM_APP_TOKEN}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setCurrentTemp(data.main.temp + "°F"),
+          setCurrentCity(data.name),
+          setCurrentCondition(data.weather[0].description);
+      });
   };
-
-  const addZipHandler = () => {
-    setUserZips((currentZips) => [
-      ...currentZips,
-      { id: Math.random().toString(), zip: enteredZip },
-    ]);
-  };
+  // setUserZips((currentZips) => [
+  //   ...currentZips,
+  //   { id: Math.random().toString(), zip: zipcode },
+  // ]);
 
   return (
     <View style={styles.screen}>
-      <View style={styles.zip}>
-        <TextInput
-          placeholder="Enter a Zip"
-          onChangeText={zipInputHandler}
-          value={enteredZip}
-        />
-        <Button title="Get The Weather!" onPress={addZipHandler} />
+      <ZipInput addZip={addZipHandler} />
+      <View style={styles.currentWeather}>
+        <View style={styles.city}>
+          <Text style={{ fontSize: 40, fontWeight: "bold" }}>
+            {currentCity}
+          </Text>
+        </View>
+        <View style={styles.temp}>
+          <Text style={{ fontSize: 70, fontWeight: "bold" }}>
+            {currentTemp}
+          </Text>
+        </View>
+        <View style={styles.condition}>
+          <Text style={{ fontSize: 40, fontWeight: "bold" }}>
+            {currentCondition}
+          </Text>
+        </View>
       </View>
-      <View style={styles.todaysWeather}>
-        <Text>Weather Goes Here</Text>
-      </View>
-      <View style={styles.todaysStats}>
+      <View style={styles.currentStats}>
         <View style={styles.stats}>
           <Text>Weather Stats Go Here</Text>
         </View>
-        <View style={styles.attire}>
+        {/* <View style={styles.attire}>
           <Text>Weather Attire Goes Here</Text>
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -53,8 +70,9 @@ const styles = StyleSheet.create({
   screen: {
     borderColor: "red",
     borderWidth: 2,
-    flexBasis: "100%",
+    //flexBasis: "100%",
     alignContent: "space-around",
+    height: "100%",
   },
   zip: {
     display: "flex",
@@ -68,17 +86,40 @@ const styles = StyleSheet.create({
     borderColor: "blue",
     borderWidth: 4,
   },
-  todaysWeather: {
+  currentWeather: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     // flexBasis: "100%",
-    // justifyContent: "flex-start",
-    alignContent: "flex-start",
-    flexWrap: "nowrap",
+    alignContent: "center",
+    flexWrap: "wrap",
     flex: 4,
-    width: "100%",
     borderColor: "green",
     borderWidth: 2,
+  },
+  city: {
+    justifyContent: "center",
+    borderColor: "green",
+    alignItems: "center",
+    borderWidth: 2,
+    width: "100%",
+    flex: 2,
+  },
+  temp: {
+    borderColor: "purple",
+    justifyContent: "center",
+    alignItems: "center",
+    // width: Dimensions.get("window").width,
+    fontSize: 40,
+    borderWidth: 2,
+    flex: 7,
+  },
+  condition: {
+    borderColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    borderWidth: 2,
+    flex: 2,
   },
   stats: {
     // display: "flex",
@@ -96,7 +137,7 @@ const styles = StyleSheet.create({
     borderColor: "orange",
     borderWidth: 4,
   },
-  todaysStats: {
+  currentStats: {
     display: "flex",
     flexDirection: "column",
     // flexBasis: "100%",
