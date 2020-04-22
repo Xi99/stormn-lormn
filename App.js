@@ -26,10 +26,9 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <View>
+      <View style={styles.zip}>
         <TextInput
           placeholder="Enter a Zip"
-          style={styles.zip}
           onChangeText={zipInputHandler}
           value={enteredZip}
         />
@@ -38,35 +37,80 @@ export default function App() {
       <View style={styles.todaysWeather}>
         <Text>Weather Goes Here</Text>
       </View>
+      <View style={styles.todaysStats}>
+        <View style={styles.stats}>
+          <Text>Weather Stats Go Here</Text>
+        </View>
+        <View style={styles.attire}>
+          <Text>Weather Attire Goes Here</Text>
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    display: "flex",
-    flexDirection: "column",
-    padding: 40,
     borderColor: "red",
     borderWidth: 2,
+    flexBasis: "100%",
+    alignContent: "space-around",
+  },
+  zip: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    // alignItems: "flex-end",
+    // flexBasis: 100,
+    // flex: 0.5,
+    marginTop: "5%",
+    padding: 5,
+    borderColor: "blue",
+    borderWidth: 4,
   },
   todaysWeather: {
-    flex: 2,
+    display: "flex",
+    flexDirection: "row",
+    // flexBasis: "100%",
+    // justifyContent: "flex-start",
+    alignContent: "flex-start",
+    flexWrap: "nowrap",
+    flex: 4,
+    width: "100%",
     borderColor: "green",
     borderWidth: 2,
   },
-  zip: {
+  stats: {
+    // display: "flex",
+    flexDirection: "column",
     flex: 1,
-    borderColor: "black",
-    borderBottomWidth: 1,
+    height: "100%",
+    borderColor: "yellow",
+    borderWidth: 4,
   },
-  listItem: {
-    padding: 10,
-    marginVertical: 10,
-    backgroundColor: "#ccc",
-    borderColor: "black",
-    borderWidth: 1,
+  attire: {
+    // display: "flex",
+    flex: 1,
+    height: "100%",
+    flexDirection: "column",
+    borderColor: "orange",
+    borderWidth: 4,
   },
+  todaysStats: {
+    display: "flex",
+    flexDirection: "column",
+    // flexBasis: "100%",
+    flex: 1,
+    borderColor: "purple",
+    borderWidth: 4,
+  },
+  // listItem: {
+  //   padding: 10,
+  //   marginVertical: 10,
+  //   backgroundColor: "#ccc",
+  //   borderColor: "black",
+  //   borderWidth: 1,
+  // },
 });
 
 // const [outputText, setOutputText] = useState("Storm'n Lorm'n!");
