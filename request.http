@@ -9,4 +9,4 @@ GET api.openweathermap.org/data/2.5/weather?q=Boulder,co,usa&appid= HTTP/1.1
 # }
 
 // Example of API call:
-// http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f3b3c41207f26b2aa5ecc7927bdb80fa
+// http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=

@@ -7,9 +7,9 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.http
 web-build/
 web-report/
-request.http
 
 # macOS
 .DS_Store
