@@ -12,6 +12,7 @@ import {
 import ZipInput from "./components/ZipInput.js";
 import apiToken from "./config";
 import CurrentWeather from "./components/CurrentWeather.js";
+import WeatherStats from "./components/WeatherStats.js";
 
 export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
@@ -43,14 +44,10 @@ export default function App() {
         currentTemp={currentTemp}
         currentCondition={currentCondition}
       />
-      <View style={styles.currentStats}>
-        <View style={styles.stats}>
-          <Text>Weather Stats Go Here</Text>
-        </View>
-        {/* <View style={styles.attire}>
+      <WeatherStats />
+      {/* <View style={styles.attire}>
           <Text>Weather Attire Goes Here</Text>
         </View> */}
-      </View>
     </View>
   );
 }
@@ -62,53 +59,6 @@ const styles = StyleSheet.create({
     //flexBasis: "100%",
     alignContent: "space-around",
     height: "100%",
-  },
-  zip: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    // alignItems: "flex-end",
-    // flexBasis: 100,
-    // flex: 0.5,
-    marginTop: "5%",
-    padding: 5,
-    borderColor: "blue",
-    borderWidth: 4,
-  },
-  currentWeather: {
-    display: "flex",
-    flexDirection: "column",
-    // flexBasis: "100%",
-    alignContent: "center",
-    flexWrap: "wrap",
-    flex: 4,
-    borderColor: "green",
-    borderWidth: 2,
-  },
-  city: {
-    justifyContent: "center",
-    borderColor: "green",
-    alignItems: "center",
-    borderWidth: 2,
-    width: "100%",
-    flex: 2,
-  },
-  temp: {
-    borderColor: "purple",
-    justifyContent: "center",
-    alignItems: "center",
-    // width: Dimensions.get("window").width,
-    fontSize: 40,
-    borderWidth: 2,
-    flex: 7,
-  },
-  condition: {
-    borderColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    borderWidth: 2,
-    flex: 2,
   },
   stats: {
     // display: "flex",
@@ -134,13 +84,4 @@ const styles = StyleSheet.create({
     borderColor: "purple",
     borderWidth: 4,
   },
-  // listItem: {
-  //   padding: 10,
-  //   marginVertical: 10,
-  //   backgroundColor: "#ccc",
-  //   borderColor: "black",
-  //   borderWidth: 1,
-  // },
 });
-
-// const [outputText, setOutputText] = useState("Storm'n Lorm'n!");

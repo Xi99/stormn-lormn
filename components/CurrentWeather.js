@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     width: "100%",
-    flex: 2,
+    flex: 1,
   },
   temp: {
     borderColor: "purple",
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     // width: Dimensions.get("window").width,
     fontSize: 40,
     borderWidth: 2,
-    flex: 7,
+    flex: 8,
   },
   condition: {
     borderColor: "red",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     borderWidth: 2,
-    flex: 2,
+    flex: 1,
   },
 });
 
