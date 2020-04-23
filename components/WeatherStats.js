@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 const WeatherStats = (props) => {
   const unixConverter = (sun) => {
@@ -21,6 +21,7 @@ const WeatherStats = (props) => {
 
   let sunset = unixConverter(props.currentSunset);
   let sunrise = unixConverter(props.currentSunrise);
+
   return (
     <View style={styles.currentStats}>
       <View style={styles.feels_like}>

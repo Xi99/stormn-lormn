@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 const CurrentWeather = (props) => {
   return (
@@ -13,10 +13,20 @@ const CurrentWeather = (props) => {
         <Text style={{ fontSize: 70, fontWeight: "bold" }}>
           {props.currentTemp}
         </Text>
+        <Image
+          style={{
+            width: 100,
+            height: 100,
+          }}
+          source={{
+            uri: `http://openweathermap.org/img/wn/${props.currentWeatherIcon}@2x.png`,
+          }}
+        />
       </View>
       <View style={styles.condition}>
         <Text style={{ fontSize: 40, fontWeight: "bold" }}>
           {props.currentCondition}
+          {/* <Text> {props.currentWeatherIcon}</Text> */}
         </Text>
       </View>
     </View>

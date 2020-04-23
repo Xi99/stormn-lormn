@@ -25,6 +25,7 @@ export default function App() {
   const [currentSunrise, setCurrentSunrise] = useState("");
   const [currentSunset, setCurrentSunset] = useState("");
   const [currentWindSpeed, setCurrentWindSpeed] = useState("");
+  const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
 
   const addZipHandler = (zipcode) => {
     // now we have the zip code to sent to the API call here
@@ -42,7 +43,8 @@ export default function App() {
           setCurrentTempMax(data.main.temp_max + "°F"),
           setCurrentSunrise(data.sys.sunrise),
           setCurrentSunset(data.sys.sunset),
-          setCurrentWindSpeed(data.wind.speed);
+          setCurrentWindSpeed(data.wind.speed),
+          setCurrentWeatherIcon(data.weather[0].icon);
       });
   };
 
@@ -53,6 +55,7 @@ export default function App() {
         currentCity={currentCity}
         currentTemp={currentTemp}
         currentCondition={currentCondition}
+        currentWeatherIcon={currentWeatherIcon}
       />
       <WeatherStats
         currentFeelsLike={currentFeelsLike}
