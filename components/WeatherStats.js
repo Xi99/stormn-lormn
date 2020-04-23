@@ -25,22 +25,28 @@ const WeatherStats = (props) => {
   return (
     <View style={styles.currentStats}>
       <View style={styles.feels_like}>
-        <Text>{props.currentFeelsLike}</Text>
+        <Text style={{ flex: 1 }}>Feels Like</Text>
+        <Text style={{ flex: 1 }}>{props.currentFeelsLike}</Text>
       </View>
       <View style={styles.tempMax}>
-        <Text>{props.currentTempMax}</Text>
+        <Text style={{ flex: 1 }}>Max Temperature</Text>
+        <Text style={{ flex: 1 }}>{props.currentTempMax}</Text>
       </View>
       <View style={styles.sunset}>
-        <Text>{sunset}</Text>
+        <Text style={{ flex: 1 }}>Sunset</Text>
+        <Text style={{ flex: 1 }}>{sunset}</Text>
       </View>
       <View style={styles.humidity}>
-        <Text>{props.currentHumidity}</Text>
+        <Text style={{ flex: 1 }}>Humidity</Text>
+        <Text style={{ flex: 1 }}>{props.currentHumidity}</Text>
       </View>
       <View style={styles.tempMin}>
-        <Text>{props.currentTempMin}</Text>
+        <Text style={{ flex: 1 }}>Min Temperature</Text>
+        <Text style={{ flex: 1 }}>{props.currentTempMin}</Text>
       </View>
       <View style={styles.sunrise}>
-        <Text>{sunrise}</Text>
+        <Text style={{ flex: 1 }}>Sunrise</Text>
+        <Text style={{ flex: 1 }}>{sunrise}</Text>
       </View>
     </View>
   );
@@ -49,17 +55,19 @@ const WeatherStats = (props) => {
 const styles = StyleSheet.create({
   feels_like: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
     //height: "100%",
+    flexWrap: "wrap",
     width: "33.3%",
     borderColor: "yellow",
     borderWidth: 4,
   },
   tempMax: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
+    flexWrap: "wrap",
     //height: "100%",
     width: "33.3%",
     borderColor: "blue",
@@ -67,17 +75,19 @@ const styles = StyleSheet.create({
   },
   sunset: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
     width: "33.3%",
+    flexWrap: "wrap",
     //height: "100%",
     borderColor: "red",
     borderWidth: 4,
   },
   humidity: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
+    flexWrap: "wrap",
     width: "33.3%",
     //height: "100%",
     borderColor: "green",
@@ -85,8 +95,9 @@ const styles = StyleSheet.create({
   },
   tempMin: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
+    flexWrap: "wrap",
     width: "33.3%",
     //height: "100%",
     borderColor: "orange",
@@ -94,9 +105,10 @@ const styles = StyleSheet.create({
   },
   sunrise: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     //flex: 1,
     width: "33.3%",
+    flexWrap: "wrap",
     //height: "100%",
     borderColor: "black",
     borderWidth: 4,
