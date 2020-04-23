@@ -18,6 +18,13 @@ export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
   const [currentCity, setCurrentCity] = useState("");
   const [currentCondition, setCurrentCondition] = useState("");
+  const [currentFeelsLike, setCurrentFeelsLike] = useState("");
+  const [currentHumidity, setCurrentHumidity] = useState("");
+  const [currentTempMin, setCurrentTempMin] = useState("");
+  const [currentTempMax, setCurrentTempMax] = useState("");
+  const [currentSunrise, setCurrentSunrise] = useState("");
+  const [currentSunset, setCurrentSunset] = useState("");
+  const [currentWindSpeed, setCurrentWindSpeed] = useState("");
 
   const addZipHandler = (zipcode) => {
     // now we have the zip code to sent to the API call here
@@ -28,13 +35,16 @@ export default function App() {
       .then((data) => {
         setCurrentTemp(data.main.temp + "°F"),
           setCurrentCity(data.name),
-          setCurrentCondition(data.weather[0].description);
+          setCurrentCondition(data.weather[0].description),
+          setCurrentFeelsLike(data.main.feels_like + "°F"),
+          setCurrentHumidity(data.main.humidity + "%"),
+          setCurrentTempMin(data.main.temp_min + "°F"),
+          setCurrentTempMax(data.main.temp_max + "°F"),
+          setCurrentSunrise(data.sys.sunrise),
+          setCurrentSunset(data.sys.sunset),
+          setCurrentWindSpeed(data.wind.speed);
       });
   };
-  // setUserZips((currentZips) => [
-  //   ...currentZips,
-  //   { id: Math.random().toString(), zip: zipcode },
-  // ]);
 
   return (
     <View style={styles.screen}>
@@ -44,7 +54,14 @@ export default function App() {
         currentTemp={currentTemp}
         currentCondition={currentCondition}
       />
-      <WeatherStats />
+      <WeatherStats
+        currentFeelsLike={currentFeelsLike}
+        currentHumidity={currentHumidity}
+        currentTempMin={currentTempMin}
+        currentTempMax={currentTempMax}
+        currentSunrise={currentSunrise}
+        currentSunset={currentSunset}
+      />
       {/* <View style={styles.attire}>
           <Text>Weather Attire Goes Here</Text>
         </View> */}
