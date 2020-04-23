@@ -11,6 +11,7 @@ import {
 
 import ZipInput from "./components/ZipInput.js";
 import apiToken from "./config";
+import CurrentWeather from "./components/CurrentWeather.js";
 
 export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
@@ -37,23 +38,11 @@ export default function App() {
   return (
     <View style={styles.screen}>
       <ZipInput addZip={addZipHandler} />
-      <View style={styles.currentWeather}>
-        <View style={styles.city}>
-          <Text style={{ fontSize: 40, fontWeight: "bold" }}>
-            {currentCity}
-          </Text>
-        </View>
-        <View style={styles.temp}>
-          <Text style={{ fontSize: 70, fontWeight: "bold" }}>
-            {currentTemp}
-          </Text>
-        </View>
-        <View style={styles.condition}>
-          <Text style={{ fontSize: 40, fontWeight: "bold" }}>
-            {currentCondition}
-          </Text>
-        </View>
-      </View>
+      <CurrentWeather
+        currentCity={currentCity}
+        currentTemp={currentTemp}
+        currentCondition={currentCondition}
+      />
       <View style={styles.currentStats}>
         <View style={styles.stats}>
           <Text>Weather Stats Go Here</Text>
