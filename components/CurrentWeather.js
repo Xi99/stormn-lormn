@@ -6,8 +6,10 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
+  ImageBackground,
 } from "react-native";
 const deviceWidth = Dimensions.get("window").width;
+//const cruiseChris = "../Images/cruiseChris.JPG";
 
 const CurrentWeather = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,6 +35,7 @@ const CurrentWeather = (props) => {
             style={{
               borderColor: "blue",
               borderWidth: 3,
+              // backgroundColor: "blue",
             }}
           >
             <Text
@@ -102,6 +105,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderColor: "green",
     borderWidth: 2,
+    //backgroundColor: "blue",
   },
   scrollArea: {
     display: "flex",
@@ -112,6 +116,7 @@ const styles = StyleSheet.create({
     //height: "100%",
     borderColor: "purple",
     borderWidth: 3,
+    //backgroundColor: "blue",
   },
   city: {
     justifyContent: "center",
@@ -120,6 +125,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: "100%",
     flex: 1,
+    //backgroundColor: "blue",
   },
   temp: {
     flexDirection: "column",
@@ -127,6 +133,7 @@ const styles = StyleSheet.create({
     borderColor: "yellow",
     justifyContent: "center",
     alignItems: "center",
+    //source: cruiseChris,
     // height: "100%",
     // width: "100%",
     // width: Dimensions.get("window").width,
@@ -140,6 +147,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderColor: "red",
     borderWidth: 2,
+    //backgroundColor: "blue",
   },
   circleDiv: {
     position: "absolute",

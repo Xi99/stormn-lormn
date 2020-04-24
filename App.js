@@ -7,13 +7,13 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  ImageBackground,
 } from "react-native";
 
 import ZipInput from "./components/ZipInput.js";
 import apiToken from "./config";
 import CurrentWeather from "./components/CurrentWeather.js";
 import WeatherStats from "./components/WeatherStats.js";
-import Carousel from "./components/Carousel.js";
 
 export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
@@ -28,6 +28,7 @@ export default function App() {
   const [currentWindSpeed, setCurrentWindSpeed] = useState("");
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
 
+  const cruiseCris = "./Images/cruiseChris.JPG";
   const addZipHandler = (zipcode) => {
     // now we have the zip code to sent to the API call here
     fetch(
@@ -52,12 +53,13 @@ export default function App() {
   return (
     <View style={styles.screen}>
       <ZipInput addZip={addZipHandler} />
+      {/* <ImageBackground source={require("Images/cruiseChris.JPG")}> */}
       <CurrentWeather
         // style="slides"
         // itemsPerInterval={1}
         items={[
           "24 Hour Weather Goes Here",
-          "7 Day Forecast Goes Here",
+          cruiseCris,
           "14 Day Forecast Goes Here",
         ]}
         currentCity={currentCity}
@@ -65,6 +67,7 @@ export default function App() {
         currentCondition={currentCondition}
         currentWeatherIcon={currentWeatherIcon}
       />
+      {/* </ImageBackground> */}
 
       <WeatherStats
         currentFeelsLike={currentFeelsLike}
