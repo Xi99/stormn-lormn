@@ -21,7 +21,7 @@ const CurrentWeather = (props) => {
   return (
     <View style={styles.currentWeather}>
       <View style={styles.city}>
-        <Text style={{ fontSize: 40, fontWeight: "bold" }}>
+        <Text style={{ fontSize: 40, fontWeight: "bold", color: "white" }}>
           {props.currentCity}
         </Text>
       </View>
@@ -31,17 +31,12 @@ const CurrentWeather = (props) => {
           pagingEnabled
           onMomentumScrollEnd={setSelectedEvent}
         >
-          <View
-            style={{
-              borderColor: "blue",
-              borderWidth: 3,
-              // backgroundColor: "blue",
-            }}
-          >
+          <View>
             <Text
               style={{
                 fontSize: 80,
                 fontWeight: "bold",
+                color: "white",
                 width: deviceWidth,
                 flex: 1,
               }}
@@ -94,60 +89,38 @@ const CurrentWeather = (props) => {
 
 const styles = StyleSheet.create({
   currentWeather: {
-    // display: "flex",
-    // flexDirection: "column",
-    // //flexBasis: "100%",
     alignItems: "stretch",
-    // alignContent: "center",
-    // flexWrap: "wrap",
     flex: 4,
     height: "100%",
     width: "100%",
-    borderColor: "green",
-    borderWidth: 2,
-    //backgroundColor: "blue",
   },
   scrollArea: {
     display: "flex",
     flexDirection: "column",
     alignContent: "center",
     width: "100%",
-    // alignItems: "stretch",
-    //height: "100%",
-    borderColor: "purple",
-    borderWidth: 3,
-    //backgroundColor: "blue",
+    backgroundColor: "#302E2B",
   },
   city: {
     justifyContent: "center",
-    borderColor: "green",
     alignItems: "center",
-    borderWidth: 2,
     width: "100%",
     flex: 1,
-    //backgroundColor: "blue",
+    backgroundColor: "#302E2B",
   },
   temp: {
     flexDirection: "column",
     flexWrap: "wrap",
-    borderColor: "yellow",
     justifyContent: "center",
     alignItems: "center",
-    //source: cruiseChris,
-    // height: "100%",
-    // width: "100%",
-    // width: Dimensions.get("window").width,
+    backgroundColor: "#302E2B",
     fontSize: 40,
-    borderWidth: 2,
     flex: 8,
   },
   image: {
     width: 100,
     height: 100,
     alignSelf: "center",
-    borderColor: "red",
-    borderWidth: 2,
-    //backgroundColor: "blue",
   },
   circleDiv: {
     position: "absolute",
@@ -163,16 +136,14 @@ const styles = StyleSheet.create({
     height: 6,
     borderRadius: 3,
     margin: 5,
-    backgroundColor: "black",
+    backgroundColor: "#0090DA",
   },
   condition: {
-    borderColor: "red",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    borderWidth: 2,
     flex: 1,
-    backgroundColor: "grey",
+    backgroundColor: "#302E2B",
   },
 });
 

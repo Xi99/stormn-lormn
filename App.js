@@ -29,7 +29,7 @@ export default function App() {
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
 
   const cruiseCris = "./Images/cruiseChris.JPG";
-  const addZipHandler = (zipcode) => {
+  const addZipHandler = (zipcode = 80304) => {
     // now we have the zip code to sent to the API call here
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&units=imperial&appid=${apiToken.OWM_APP_TOKEN}`
@@ -86,34 +86,22 @@ export default function App() {
 
 const styles = StyleSheet.create({
   screen: {
-    borderColor: "red",
-    borderWidth: 2,
-    //flexBasis: "100%",
     alignContent: "space-around",
     height: "100%",
   },
   stats: {
-    // display: "flex",
     flexDirection: "column",
     flex: 1,
     height: "100%",
-    borderColor: "yellow",
-    borderWidth: 4,
   },
   attire: {
-    // display: "flex",
     flex: 1,
     height: "100%",
     flexDirection: "column",
-    borderColor: "orange",
-    borderWidth: 4,
   },
   currentStats: {
     display: "flex",
     flexDirection: "column",
-    // flexBasis: "100%",
     flex: 1,
-    borderColor: "purple",
-    borderWidth: 4,
   },
 });

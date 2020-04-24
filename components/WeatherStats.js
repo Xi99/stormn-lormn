@@ -25,28 +25,146 @@ const WeatherStats = (props) => {
   return (
     <View style={styles.currentStats}>
       <View style={styles.feels_like}>
-        <Text style={{ flex: 1 }}>Feels Like</Text>
-        <Text style={{ flex: 1 }}>{props.currentFeelsLike}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Feels Like
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            alignSelf: "center",
+          }}
+        >
+          {props.currentFeelsLike}
+        </Text>
       </View>
       <View style={styles.tempMax}>
-        <Text style={{ flex: 1 }}>Max Temperature</Text>
-        <Text style={{ flex: 1 }}>{props.currentTempMax}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Max Temperature
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            alignSelf: "center",
+          }}
+        >
+          {props.currentTempMax}
+        </Text>
       </View>
       <View style={styles.sunset}>
-        <Text style={{ flex: 1 }}>Sunset</Text>
-        <Text style={{ flex: 1 }}>{sunset}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Sunset
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          {sunset}
+        </Text>
       </View>
       <View style={styles.humidity}>
-        <Text style={{ flex: 1 }}>Humidity</Text>
-        <Text style={{ flex: 1 }}>{props.currentHumidity}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Humidity
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          {props.currentHumidity}
+        </Text>
       </View>
       <View style={styles.tempMin}>
-        <Text style={{ flex: 1 }}>Min Temperature</Text>
-        <Text style={{ flex: 1 }}>{props.currentTempMin}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Min Temperature
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          {props.currentTempMin}
+        </Text>
       </View>
       <View style={styles.sunrise}>
-        <Text style={{ flex: 1 }}>Sunrise</Text>
-        <Text style={{ flex: 1 }}>{sunrise}</Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          Sunrise
+        </Text>
+        <Text
+          style={{
+            flex: 1,
+            color: "white",
+            fontWeight: "bold",
+            width: "100%",
+            alignSelf: "center",
+          }}
+        >
+          {sunrise}
+        </Text>
       </View>
     </View>
   );
@@ -54,75 +172,64 @@ const WeatherStats = (props) => {
 
 const styles = StyleSheet.create({
   feels_like: {
-    // display: "flex",
-    flexDirection: "column",
-    //flex: 1,
-    //height: "100%",
     flexWrap: "wrap",
     width: "33.3%",
-    borderColor: "yellow",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    backgroundColor: "#0090DA",
   },
   tempMax: {
-    // display: "flex",
     flexDirection: "column",
-    //flex: 1,
     flexWrap: "wrap",
-    //height: "100%",
     width: "33.3%",
-    borderColor: "blue",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    backgroundColor: "#0090DA",
   },
   sunset: {
-    // display: "flex",
     flexDirection: "column",
-    //flex: 1,
     width: "33.3%",
     flexWrap: "wrap",
-    //height: "100%",
-    borderColor: "red",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    backgroundColor: "#0090DA",
   },
   humidity: {
-    // display: "flex",
     flexDirection: "column",
-    //flex: 1,
     flexWrap: "wrap",
     width: "33.3%",
-    //height: "100%",
-    borderColor: "green",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    backgroundColor: "#0090DA",
   },
   tempMin: {
-    // display: "flex",
     flexDirection: "column",
-    //flex: 1,
     flexWrap: "wrap",
     width: "33.3%",
-    //height: "100%",
-    borderColor: "orange",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    backgroundColor: "#0090DA",
   },
   sunrise: {
-    // display: "flex",
+    padding: 4,
     flexDirection: "column",
-    //flex: 1,
     width: "33.3%",
     flexWrap: "wrap",
-    //height: "100%",
-    borderColor: "black",
-    borderWidth: 4,
+    borderColor: "white",
+    borderWidth: 1,
+    alignContent: "center",
+    backgroundColor: "#0090DA",
   },
   currentStats: {
+    margin: 3,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-evenly",
-    //alignItems: "stretch",
     alignContent: "stretch",
     flex: 1,
-    borderColor: "purple",
-    borderWidth: 4,
+    backgroundColor: "#0090DA",
+    //borderWidth: 4,
   },
 });
 
