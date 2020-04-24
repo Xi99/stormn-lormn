@@ -8,11 +8,9 @@ import {
   StyleSheet,
 } from "react-native";
 const deviceWidth = Dimensions.get("window").width;
-//const [currentIndex, setCurrentIndex] = useState(0);
 
 const CurrentWeather = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  let selectedIndex = 0;
   const setSelectedEvent = (e) => {
     const viewSize = e.nativeEvent.layoutMeasurement.width;
     const contentOffset = e.nativeEvent.contentOffset.x;
@@ -20,7 +18,6 @@ const CurrentWeather = (props) => {
   };
   return (
     <View style={styles.currentWeather}>
-      {/* <ScrollView style={styles.scrollArea}> */}
       <View style={styles.city}>
         <Text style={{ fontSize: 40, fontWeight: "bold" }}>
           {props.currentCity}
@@ -36,8 +33,6 @@ const CurrentWeather = (props) => {
             style={{
               borderColor: "blue",
               borderWidth: 3,
-              //flexDirection: "column",
-              //flexWrap: "wrap",
             }}
           >
             <Text
