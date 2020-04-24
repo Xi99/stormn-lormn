@@ -13,6 +13,7 @@ import ZipInput from "./components/ZipInput.js";
 import apiToken from "./config";
 import CurrentWeather from "./components/CurrentWeather.js";
 import WeatherStats from "./components/WeatherStats.js";
+import Carousel from "./components/Carousel.js";
 
 export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
@@ -52,11 +53,33 @@ export default function App() {
     <View style={styles.screen}>
       <ZipInput addZip={addZipHandler} />
       <CurrentWeather
+        // style="slides"
+        // itemsPerInterval={1}
+        items={[
+          "Welcome, swipe to continue.",
+          "About feature X.",
+          "About feature Y.",
+        ]}
         currentCity={currentCity}
         currentTemp={currentTemp}
         currentCondition={currentCondition}
         currentWeatherIcon={currentWeatherIcon}
       />
+      {/* <Carousel
+        style="slides"
+        itemsPerInterval={1}
+        items={[
+          {
+            title: "Welcome, swipe to continue.",
+          },
+          {
+            title: "About feature X.",
+          },
+          {
+            title: "About feature Y.",
+          },
+        ]}
+      /> */}
       <WeatherStats
         currentFeelsLike={currentFeelsLike}
         currentHumidity={currentHumidity}
