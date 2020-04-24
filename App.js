@@ -56,30 +56,16 @@ export default function App() {
         // style="slides"
         // itemsPerInterval={1}
         items={[
-          "Welcome, swipe to continue.",
-          "About feature X.",
-          "About feature Y.",
+          "24 Hour Weather Goes Here",
+          "7 Day Forecast Goes Here",
+          "14 Day Forecast Goes Here",
         ]}
         currentCity={currentCity}
         currentTemp={currentTemp}
         currentCondition={currentCondition}
         currentWeatherIcon={currentWeatherIcon}
       />
-      {/* <Carousel
-        style="slides"
-        itemsPerInterval={1}
-        items={[
-          {
-            title: "Welcome, swipe to continue.",
-          },
-          {
-            title: "About feature X.",
-          },
-          {
-            title: "About feature Y.",
-          },
-        ]}
-      /> */}
+
       <WeatherStats
         currentFeelsLike={currentFeelsLike}
         currentHumidity={currentHumidity}
