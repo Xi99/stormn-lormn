@@ -15,7 +15,9 @@ const HourlyWeather = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>24 Hour Weather</Text>
+      <View>
+        <Text>24 Hour Weather</Text>
+      </View>
     </View>
   );
 };

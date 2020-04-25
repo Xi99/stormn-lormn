@@ -54,6 +54,7 @@ const ZipInput = (props) => {
             <Button
               style={{ marginBottom: 10, elevation: 6 }}
               title="Get The Weather!"
+              color="#0090DA"
               onPress={addZipHandler}
             />
             <Button title="cancel" color="red" onPress={props.onCancel} />
