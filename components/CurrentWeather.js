@@ -32,38 +32,19 @@ const CurrentWeather = (props) => {
           onMomentumScrollEnd={setSelectedEvent}
         >
           <View>
-            <Text
-              style={{
-                fontSize: 80,
-                fontWeight: "bold",
-                color: "white",
-                width: deviceWidth,
-                flex: 1,
+            <Text style={styles.degrees}>{props.currentTemp}</Text>
+            <Image
+              style={styles.image}
+              source={{
+                uri: `http://openweathermap.org/img/wn/${props.currentWeatherIcon}@2x.png`,
               }}
-            >
-              {props.currentTemp}
-              <Image
-                style={styles.image}
-                source={{
-                  uri: `http://openweathermap.org/img/wn/${props.currentWeatherIcon}@2x.png`,
-                }}
-              />
-            </Text>
+            />
           </View>
           {props.items.map((item) => (
             <Text key={item} style={{ width: deviceWidth, height: "100%" }}>
               {item}
             </Text>
           ))}
-          {/* <Text style={{ fontSize: 70, fontWeight: "bold" }}>
-            {props.currentTemp}
-          </Text>
-          <Image
-            style={styles.image}
-            source={{
-              uri: `http://openweathermap.org/img/wn/${props.currentWeatherIcon}@2x.png`,
-            }}
-          /> */}
         </ScrollView>
         <View style={styles.circleDiv}>
           {props.items.map((item, i) => (
@@ -78,17 +59,20 @@ const CurrentWeather = (props) => {
         </View>
       </View>
       <View style={styles.condition}>
-        <Text style={{ fontSize: 30, fontWeight: "bold", color: "white" }}>
+        <Text style={{ fontSize: 35, fontWeight: "bold", color: "white" }}>
           {props.currentCondition}
         </Text>
       </View>
-      {/* </ScrollView> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   currentWeather: {
+    flexDirection: "column",
+    // justifyContent: "center",
+    // alignSelf: "center",
+    // alignContent: "center",
     alignItems: "stretch",
     flex: 4,
     height: "100%",
@@ -109,18 +93,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#302E2B",
   },
   temp: {
-    flexDirection: "column",
-    flexWrap: "wrap",
+    //flexDirection: "column",
+    //flexWrap: "wrap",
     justifyContent: "center",
+    alignContent: "center",
     alignItems: "center",
     backgroundColor: "#302E2B",
-    fontSize: 40,
-    flex: 8,
+    //marginLeft: "5%",
+    flex: 6,
+  },
+  degrees: {
+    fontSize: 90,
+    fontWeight: "bold",
+    color: "white",
+    alignSelf: "center",
+    justifyContent: "center",
+    marginLeft: "2%",
+    width: deviceWidth,
+    flex: 1,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: "50%",
+    marginRight: "10%",
+    // height: 100,
+    //alignItems: "center",
+    //justifyContent: "center",
     alignSelf: "center",
+    flex: 1,
   },
   circleDiv: {
     position: "absolute",

@@ -28,6 +28,8 @@ export default function App() {
   const [currentWindSpeed, setCurrentWindSpeed] = useState("");
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
 
+  const [isZip, setIsZip] = useState(false);
+
   const cruiseCris = "./Images/cruiseChris.JPG";
   const addZipHandler = (zipcode = 80304) => {
     // now we have the zip code to sent to the API call here
@@ -48,17 +50,28 @@ export default function App() {
           setCurrentWindSpeed(data.wind.speed),
           setCurrentWeatherIcon(data.weather[0].icon);
       });
+    setIsZip(false);
   };
 
+  const cancelZipHandler = () => {
+    setIsZip(false);
+  };
   return (
     <View style={styles.screen}>
-      <ZipInput addZip={addZipHandler} />
-      {/* <ImageBackground source={require("Images/cruiseChris.JPG")}> */}
+      <Button
+        style={styles.modalButton}
+        title="Weather By Zipcode"
+        onPress={() => setIsZip(true)}
+      />
+      <ZipInput
+        visible={isZip}
+        addZip={addZipHandler}
+        onCancel={cancelZipHandler}
+      />
+
       <CurrentWeather
-        // style="slides"
-        // itemsPerInterval={1}
         items={[
-          "24 Hour Weather Goes Here",
+          <Text>24 Hour Weather Goes Here</Text>,
           cruiseCris,
           "14 Day Forecast Goes Here",
         ]}
@@ -88,6 +101,10 @@ const styles = StyleSheet.create({
   screen: {
     alignContent: "space-around",
     height: "100%",
+    marginTop: "6%",
+  },
+  modalButton: {
+    marginTop: "50%",
   },
   stats: {
     flexDirection: "column",

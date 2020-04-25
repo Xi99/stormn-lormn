@@ -7,7 +7,7 @@ const WeatherStats = (props) => {
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
     var date = new Date(sun * 1000);
     // Hours part from the timestamp
-    var hours = date.getHours();
+    var hours = date.getHours() % 12;
     // Minutes part from the timestamp
     var minutes = "0" + date.getMinutes();
     // Seconds part from the timestamp
@@ -41,7 +41,7 @@ const WeatherStats = (props) => {
             flex: 1,
             color: "white",
             fontWeight: "bold",
-            alignSelf: "center",
+            //alignSelf: "center",
           }}
         >
           {props.currentFeelsLike}
@@ -64,7 +64,7 @@ const WeatherStats = (props) => {
             flex: 1,
             color: "white",
             fontWeight: "bold",
-            alignSelf: "center",
+            //alignSelf: "center",
           }}
         >
           {props.currentTempMax}
@@ -91,7 +91,7 @@ const WeatherStats = (props) => {
             alignSelf: "center",
           }}
         >
-          {sunset}
+          {sunset.slice(0, 4)}pm
         </Text>
       </View>
       <View style={styles.humidity}>
@@ -163,7 +163,7 @@ const WeatherStats = (props) => {
             alignSelf: "center",
           }}
         >
-          {sunrise}
+          {sunrise.slice(0, 4)}am
         </Text>
       </View>
     </View>
@@ -172,6 +172,7 @@ const WeatherStats = (props) => {
 
 const styles = StyleSheet.create({
   feels_like: {
+    padding: 5,
     flexWrap: "wrap",
     width: "33.3%",
     borderColor: "white",
@@ -179,6 +180,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0090DA",
   },
   tempMax: {
+    padding: 5,
     flexDirection: "column",
     flexWrap: "wrap",
     width: "33.3%",
@@ -187,6 +189,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0090DA",
   },
   sunset: {
+    padding: 5,
     flexDirection: "column",
     width: "33.3%",
     flexWrap: "wrap",
@@ -195,6 +198,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0090DA",
   },
   humidity: {
+    padding: 5,
     flexDirection: "column",
     flexWrap: "wrap",
     width: "33.3%",
@@ -203,15 +207,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#0090DA",
   },
   tempMin: {
+    padding: 5,
     flexDirection: "column",
     flexWrap: "wrap",
     width: "33.3%",
+    //alignContent: "center",
     borderColor: "white",
     borderWidth: 1,
     backgroundColor: "#0090DA",
   },
   sunrise: {
-    padding: 4,
+    padding: 5,
     flexDirection: "column",
     width: "33.3%",
     flexWrap: "wrap",
