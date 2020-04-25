@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Modal, StyleSheet } from "react-native";
+import brick from "../Images/pirateChris.jpg";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Modal,
+  ImageBackground,
+  StyleSheet,
+} from "react-native";
 
 const ZipInput = (props) => {
   const [enteredZip, setEnteredZip] = useState("");
@@ -9,43 +18,73 @@ const ZipInput = (props) => {
   };
 
   const addZipHandler = () => {
-    props.addZip(enteredZip);
     setEnteredZip("");
+    props.addZip(enteredZip);
   };
   return (
     <Modal visible={props.visible} animationType="slide">
-      <View style={styles.zip}>
-        <TextInput
-          style={{ fontSize: 70, marginLeft: "22%", marginBottom: 10 }}
-          placeholder="Enter a Zip"
-          onChangeText={zipInputHandler}
-          value={enteredZip}
-        />
-        <Button
-          style={{ marginBottom: 10 }}
-          title="Get The Weather!"
-          onPress={addZipHandler}
-        />
-        <Button title="cancel" color="red" onPress={props.onCancel} />
-      </View>
+      <ImageBackground
+        source={require("../Images/cruiseChris.jpg")}
+        //resizeMode="cover"
+        style={styles.background}
+      >
+        <View>
+          {/* <Text style={{ fontSize: 40, fontWeight: "bold" }}>
+            Storm'n Lorm'n
+          </Text> */}
+        </View>
+        <View style={styles.zip}>
+          <TextInput
+            style={{
+              color: "white",
+              fontSize: 70,
+              textAlign: "center",
+              //marginLeft: "3%",
+              alignSelf: "center",
+              alignContent: "center",
+              justifyContent: "center",
+              marginBottom: 10,
+              width: "100%",
+            }}
+            placeholder="Enter a Zip"
+            onChangeText={zipInputHandler}
+            value={enteredZip}
+          />
+          <View style={styles.buttonContainer}>
+            <Button
+              style={{ marginBottom: 10 }}
+              title="Get The Weather!"
+              onPress={addZipHandler}
+            />
+            <Button title="cancel" color="red" onPress={props.onCancel} />
+          </View>
+        </View>
+      </ImageBackground>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  // screen: {
-  //   flexBasis: "100%",
-  //   alignContent: "space-around",
-  // },
+  background: {
+    color: "white",
+    width: "100%",
+    height: "100%",
+  },
   zip: {
     flex: 1,
+    color: "white",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
     // justifyContent: "flex-start",
     marginTop: "5%",
     padding: 5,
     fontSize: 30,
+  },
+  buttonContainer: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: "60%",
   },
 });
 

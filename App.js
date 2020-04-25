@@ -28,10 +28,10 @@ export default function App() {
   const [currentWindSpeed, setCurrentWindSpeed] = useState("");
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
 
-  const [isZip, setIsZip] = useState(false);
+  const [isZip, setIsZip] = useState(true);
 
   const cruiseCris = "./Images/cruiseChris.JPG";
-  const addZipHandler = (zipcode = 80304) => {
+  const addZipHandler = (zipcode = "80304") => {
     // now we have the zip code to sent to the API call here
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&units=imperial&appid=${apiToken.OWM_APP_TOKEN}`
