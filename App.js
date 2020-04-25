@@ -30,6 +30,8 @@ export default function App() {
 
   const [isZip, setIsZip] = useState(true);
 
+  const key1 = 1;
+  const key2 = 2;
   const cruiseCris = "./Images/cruiseChris.JPG";
   const addZipHandler = (zipcode = "80304") => {
     // now we have the zip code to sent to the API call here
@@ -60,7 +62,7 @@ export default function App() {
     <View style={styles.screen}>
       <Button
         style={styles.modalButton}
-        title="Weather By Zipcode"
+        title="Choose Another Zipcode"
         onPress={() => setIsZip(true)}
       />
       <ZipInput
@@ -71,16 +73,18 @@ export default function App() {
 
       <CurrentWeather
         items={[
-          <Text>24 Hour Weather Goes Here</Text>,
+          <Text key={key1} style={{ fontSize: 40, color: "white" }}>
+            24 Hour Weather
+          </Text>,
+          "7 Day Forecast",
           cruiseCris,
-          "14 Day Forecast Goes Here",
         ]}
+        // <Text style={{ fontSize: 40, color: "white" }}>7 Day Forecast</Text>,
         currentCity={currentCity}
         currentTemp={currentTemp}
         currentCondition={currentCondition}
         currentWeatherIcon={currentWeatherIcon}
       />
-      {/* </ImageBackground> */}
 
       <WeatherStats
         currentFeelsLike={currentFeelsLike}

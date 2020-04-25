@@ -6,10 +6,12 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
-  ImageBackground,
 } from "react-native";
+
+//import Carousel from "react-native-carousel-view";
+import HourlyWeather from "./HourlyWeather.js";
+
 const deviceWidth = Dimensions.get("window").width;
-//const cruiseChris = "../Images/cruiseChris.JPG";
 
 const CurrentWeather = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,6 +20,9 @@ const CurrentWeather = (props) => {
     const contentOffset = e.nativeEvent.contentOffset.x;
     setCurrentIndex(Math.floor(contentOffset / viewSize));
   };
+
+  const key1 = 1;
+  const key2 = 2;
   return (
     <View style={styles.currentWeather}>
       <View style={styles.city}>
@@ -40,8 +45,17 @@ const CurrentWeather = (props) => {
               }}
             />
           </View>
+
           {props.items.map((item) => (
-            <Text key={item} style={{ width: deviceWidth, height: "100%" }}>
+            <Text
+              key={item.key}
+              style={{
+                width: deviceWidth,
+                height: "100%",
+                fontSize: 40,
+                color: "white",
+              }}
+            >
               {item}
             </Text>
           ))}
@@ -108,13 +122,13 @@ const styles = StyleSheet.create({
     color: "white",
     alignSelf: "center",
     justifyContent: "center",
-    marginLeft: "2%",
+    marginLeft: "3%",
     width: deviceWidth,
     flex: 1,
   },
   image: {
     width: "50%",
-    marginRight: "10%",
+    marginRight: "13%",
     // height: 100,
     //alignItems: "center",
     //justifyContent: "center",

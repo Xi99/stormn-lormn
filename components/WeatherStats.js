@@ -32,6 +32,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           Feels Like
@@ -41,6 +42,7 @@ const WeatherStats = (props) => {
             flex: 1,
             color: "white",
             fontWeight: "bold",
+            fontSize: 18,
             //alignSelf: "center",
           }}
         >
@@ -55,6 +57,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 14,
           }}
         >
           Max Temperature
@@ -64,6 +67,7 @@ const WeatherStats = (props) => {
             flex: 1,
             color: "white",
             fontWeight: "bold",
+            fontSize: 18,
             //alignSelf: "center",
           }}
         >
@@ -78,6 +82,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           Sunset
@@ -89,6 +94,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           {sunset.slice(0, 4)}pm
@@ -102,6 +108,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           Humidity
@@ -113,6 +120,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           {props.currentHumidity}
@@ -126,6 +134,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 14,
           }}
         >
           Min Temperature
@@ -137,6 +146,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           {props.currentTempMin}
@@ -150,6 +160,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           Sunrise
@@ -161,6 +172,7 @@ const WeatherStats = (props) => {
             fontWeight: "bold",
             width: "100%",
             alignSelf: "center",
+            fontSize: 18,
           }}
         >
           {sunrise.slice(0, 4)}am

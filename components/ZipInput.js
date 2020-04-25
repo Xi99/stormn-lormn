@@ -52,7 +52,7 @@ const ZipInput = (props) => {
           />
           <View style={styles.buttonContainer}>
             <Button
-              style={{ marginBottom: 10 }}
+              style={{ marginBottom: 10, elevation: 6 }}
               title="Get The Weather!"
               onPress={addZipHandler}
             />
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     width: "60%",
+    elevation: 5,
   },
 });
 
