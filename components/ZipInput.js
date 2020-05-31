@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import brick from "../Images/pirateChris.jpg";
+//import brick from "../Images/pirateChris.jpg";
 import {
   View,
   Text,
