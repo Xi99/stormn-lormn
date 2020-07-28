@@ -18,7 +18,7 @@ const ZipInput = ({ navigation }) => {
   };
 
   const addZipInputHandler = () => {
-    // setEnteredZip("");
+    setEnteredZip("");
     // addZip(enteredZip);
     // console.warn(enteredZip);
     navigation.navigate("CurrentWeather", { zip: enteredZip });
