@@ -88,7 +88,7 @@ const CurrentWeather = ({ navigation, route }) => {
         />
       </View>
       <View style={styles.condition}>
-        <Text style={{ fontSize: 35, fontWeight: "bold", color: "white" }}>
+        <Text style={{ fontSize: 45, fontWeight: "bold", color: "white" }}>
           {currentCondition}
         </Text>
       </View>
