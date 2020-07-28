@@ -59,7 +59,7 @@ export default function Login({ navigation }) {
       />
 
       <View style={{ width: "80%", alignSelf: "center", marginTop: 10 }}>
-        <Button title="Login" color="orange" onPress={handleLogin} />
+        <Button title="Greatness Awaits" color="orange" onPress={handleLogin} />
       </View>
     </View>
   );

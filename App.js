@@ -101,7 +101,15 @@ const LoginStackScreen = ({ navigation }) => (
     <LoginStack.Screen
       name="Login"
       component={Login}
-      options={{ title: "Login" }}
+      options={{
+        title: "Login",
+        headerTitleStyle: {
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: 30,
+          // marginRight: 35,
+        },
+      }}
     />
   </LoginStack.Navigator>
 );
