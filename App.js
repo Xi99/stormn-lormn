@@ -8,12 +8,13 @@ import {
   ScrollView,
   FlatList,
   ImageBackground,
+  BackHandler,
 } from "react-native";
 
-import ZipInput from "./components/ZipInput.js";
+import ZipInput from "./screens/ZipInput.js.js";
 import apiToken from "./config";
-import CurrentWeather from "./components/CurrentWeather.js";
-import WeatherStats from "./components/WeatherStats.js";
+import CurrentWeather from "./screens/CurrentWeather.js";
+import WeatherStats from "./screens/WeatherStats.js.js";
 
 export default function App() {
   const [currentTemp, setCurrentTemp] = useState("");
