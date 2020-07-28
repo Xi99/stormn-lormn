@@ -79,7 +79,7 @@ const CurrentWeather = ({ navigation, route }) => {
         <Image
           style={styles.image}
           source={{
-            uri: `http://openweathermap.org/img/wn/01d@2x.png`,
+            uri: `http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png`,
           }}
         />
       </View>
