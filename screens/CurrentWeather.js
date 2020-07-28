@@ -45,6 +45,10 @@ const CurrentWeather = ({ navigation, route }) => {
   }, []);
   const addZipHandler = (zipcode) => {
     // now we have the zip code to sent to the API call here
+    if (zipcode === "") {
+      zipcode = "80304";
+    }
+
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&units=imperial&appid=${apiToken.OWM_APP_TOKEN}`
     )
