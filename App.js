@@ -57,14 +57,14 @@ const HomeStackScreen = ({ navigation }) => (
           <View style={{ marginLeft: 5 }}>
             <Button
               onPress={() => navigation.toggleDrawer()}
-              title="LOGIN"
+              title="III"
               color="green"
             />
           </View>
         ),
         headerTitleStyle: {
           textAlign: "center",
-          marginLeft: 50,
+          // marginLeft: 50,
           fontWeight: "bold",
           fontSize: 30,
         },
@@ -110,7 +110,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="ZipInput">
-        <Drawer.Screen name="ZipInput" component={HomeStackScreen} />
+        <Drawer.Screen name="Enter A ZIP" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
       </Drawer.Navigator>
       {/* <Stack.Navigator
