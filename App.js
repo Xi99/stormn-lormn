@@ -8,121 +8,169 @@ import {
   ScrollView,
   FlatList,
   ImageBackground,
+  BackHandler,
 } from "react-native";
 
-import ZipInput from "./components/ZipInput.js";
-import apiToken from "./config";
-import CurrentWeather from "./components/CurrentWeather.js";
-import WeatherStats from "./components/WeatherStats.js";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-export default function App() {
-  const [currentTemp, setCurrentTemp] = useState("");
-  const [currentCity, setCurrentCity] = useState("");
-  const [currentCondition, setCurrentCondition] = useState("");
-  const [currentFeelsLike, setCurrentFeelsLike] = useState("");
-  const [currentHumidity, setCurrentHumidity] = useState("");
-  const [currentTempMin, setCurrentTempMin] = useState("");
-  const [currentTempMax, setCurrentTempMax] = useState("");
-  const [currentSunrise, setCurrentSunrise] = useState("");
-  const [currentSunset, setCurrentSunset] = useState("");
-  const [currentWindSpeed, setCurrentWindSpeed] = useState("");
-  const [currentWeatherIcon, setCurrentWeatherIcon] = useState("");
+import Login from "./screens/Login";
 
-  const [isZip, setIsZip] = useState(true);
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+const HomeStack = createStackNavigator();
+const LoginStack = createStackNavigator();
 
-  const key1 = 1;
-  const key2 = 2;
-  const cruiseCris = "./Images/cruiseChris.JPG";
-  const addZipHandler = (zipcode = "80304") => {
-    // now we have the zip code to sent to the API call here
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&units=imperial&appid=${apiToken.OWM_APP_TOKEN}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCurrentTemp(data.main.temp + "°F"),
-          setCurrentCity(data.name),
-          setCurrentCondition(data.weather[0].description),
-          setCurrentFeelsLike(data.main.feels_like + "°F"),
-          setCurrentHumidity(data.main.humidity + "%"),
-          setCurrentTempMin(data.main.temp_min + "°F"),
-          setCurrentTempMax(data.main.temp_max + "°F"),
-          setCurrentSunrise(data.sys.sunrise),
-          setCurrentSunset(data.sys.sunset),
-          setCurrentWindSpeed(data.wind.speed),
-          setCurrentWeatherIcon(data.weather[0].icon);
-      });
-    setIsZip(false);
-  };
+import ZipInput from "./screens/ZipInput.js";
 
-  const cancelZipHandler = () => {
-    setIsZip(false);
-  };
+import CurrentWeather from "./screens/CurrentWeather.js";
+import WeatherStats from "./screens/WeatherStats.js";
+
+const HomeStackScreen = ({ navigation }) => (
+  <HomeStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#0090DA",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    }}
+  >
+    <HomeStack.Screen
+      name="ZipInput"
+      component={ZipInput}
+      options={{
+        title: "Enter ZIP",
+        headerRight: () => (
+          <View style={{ marginRight: 5 }}>
+            <Button
+              onPress={() => BackHandler.exitApp()}
+              title="EXIT"
+              color="#191970"
+            />
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={{ marginLeft: 5 }}>
+            <Button
+              onPress={() => navigation.toggleDrawer()}
+              title="III"
+              color="green"
+            />
+          </View>
+        ),
+        headerTitleStyle: {
+          textAlign: "center",
+          // marginLeft: 50,
+          fontWeight: "bold",
+          fontSize: 30,
+        },
+      }}
+    />
+    <HomeStack.Screen
+      name="CurrentWeather"
+      component={CurrentWeather}
+      options={{
+        title: "Current Weather",
+        headerTitleStyle: {
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: 30,
+          marginRight: 35,
+        },
+      }}
+    />
+  </HomeStack.Navigator>
+);
+
+const LoginStackScreen = ({ navigation }) => (
+  <LoginStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#0090DA",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    }}
+  >
+    <LoginStack.Screen
+      name="Login"
+      component={Login}
+      options={{
+        title: "Login",
+        headerTitleStyle: {
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: 30,
+          // marginRight: 35,
+        },
+      }}
+    />
+  </LoginStack.Navigator>
+);
+
+const App = () => {
   return (
-    <View style={styles.screen}>
-      <Button
-        style={styles.modalButton}
-        title="Choose Another Zipcode"
-        onPress={() => setIsZip(true)}
-      />
-      <ZipInput
-        visible={isZip}
-        addZip={addZipHandler}
-        onCancel={cancelZipHandler}
-      />
-
-      <CurrentWeather
-        items={[
-          <Text key={key1} style={{ fontSize: 40, color: "white" }}>
-            24 Hour Weather
-          </Text>,
-          "7 Day Forecast",
-          cruiseCris,
-        ]}
-        // <Text style={{ fontSize: 40, color: "white" }}>7 Day Forecast</Text>,
-        currentCity={currentCity}
-        currentTemp={currentTemp}
-        currentCondition={currentCondition}
-        currentWeatherIcon={currentWeatherIcon}
-      />
-
-      <WeatherStats
-        currentFeelsLike={currentFeelsLike}
-        currentHumidity={currentHumidity}
-        currentTempMin={currentTempMin}
-        currentTempMax={currentTempMax}
-        currentSunrise={currentSunrise}
-        currentSunset={currentSunset}
-      />
-      {/* <View style={styles.attire}>
-          <Text>Weather Attire Goes Here</Text>
-        </View> */}
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="ZipInput">
+        <Drawer.Screen name="Enter A ZIP" component={HomeStackScreen} />
+        <Drawer.Screen name="Login" component={LoginStackScreen} />
+      </Drawer.Navigator>
+      {/* <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#0090DA",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            textAlign: "center",
+          },
+        }}
+      >
+        <Stack.Screen
+          name="ZipInput"
+          component={ZipInput}
+          options={{
+            title: "Enter ZIP",
+            headerRight: () => (
+              <View style={{ marginRight: 5 }}>
+                <Button
+                  onPress={() => BackHandler.exitApp()}
+                  title="EXIT"
+                  color="#191970"
+                />
+              </View>
+            ),
+            headerTitleStyle: {
+              textAlign: "center",
+              marginLeft: 50,
+              fontWeight: "bold",
+              fontSize: 30,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="CurrentWeather"
+          component={CurrentWeather}
+          options={{
+            title: "Current Weather",
+            headerTitleStyle: {
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: 25,
+            },
+          }}
+        />
+      </Stack.Navigator> */}
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  screen: {
-    alignContent: "space-around",
-    height: "100%",
-    marginTop: "6%",
-  },
-  modalButton: {
-    marginTop: "50%",
-  },
-  stats: {
-    flexDirection: "column",
-    flex: 1,
-    height: "100%",
-  },
-  attire: {
-    flex: 1,
-    height: "100%",
-    flexDirection: "column",
-  },
-  currentStats: {
-    display: "flex",
-    flexDirection: "column",
-    flex: 1,
-  },
-});
+export default App;
