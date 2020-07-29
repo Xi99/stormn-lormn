@@ -1,4 +1,4 @@
-import beerRepo from "../repositories/beerRepo.js";
+import beerRepo from "../repositories/userRepo.js";
 
 export const getBeers = async () => {
   const beers = await beerRepo.selectAll();

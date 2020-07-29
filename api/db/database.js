@@ -9,7 +9,7 @@ class Database {
   async connect() {
     this.client = new Client({
       user: "postgres",
-      database: "logrocket_deno",
+      database: "stormn",
       hostname: "localhost",
       password: "postgres",
       port: 5432,

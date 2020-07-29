@@ -1,17 +1,17 @@
-import { Application } from "https://deno.land/x/oak@v4.0.0/mod.ts";
-import getBeers from "./controllers/getBeers.js";
-import getBeerDetails from "./controllers/getBeerDetails.js";
-import createBeer from "./controllers/createBeer.js";
-import updateBeer from "./controllers/updateBeer.js";
-import deleteBeer from "./controllers/deleteBeer.js";
+import { Router } from "https://deno.land/x/oak/mod.ts";
+import getUsers from "./controllers/getUsers.js";
+import getUserDetails from "./controllers/getUserDetails.js";
+import createUser from "./controllers/createUser.js";
+import updateUser from "./controllers/updateUser.js";
+import deleteUser from "./controllers/deleteUser.js";
 
 const router = new Router();
 
 router
-  .get("/beers", getBeers)
-  .get("/beers/:id", getBeerDetails)
-  .post("/beers", createBeer)
-  .put("/beers/:id", updateBeer)
-  .delete("/beers/:id", deleteBeer);
+  .get("/users", getUsers)
+  .get("/users/:id", getUserDetails)
+  .post("/users", createUser)
+  .put("/users/:id", updateUser)
+  .delete("/users/:id", deleteUser);
 
 export default router;
