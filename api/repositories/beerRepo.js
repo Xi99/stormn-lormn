@@ -18,14 +18,18 @@ class BeerRepo {
   selectById(id) {
     return client.query(`SELECT * FROM beers WHERE id = $1`, id);
   }
-update(id, beer) {
+  update(id, beer) {
     var latestBeer = this.selectById(id);
     var query = `UPDATE beers SET name = $1, brand = $2, is_premium = $3 WHERE id = $4`;
 
-    return client.query(query,
-        beer.name !== undefined ? beer.name : latestBeer.name,
-        beer.brand !== undefined ? beer.brand : latestBeer.brand,
-        beer.is_premium !== undefined ? beer.is_premium : latestBeer.is_premium, id);
+    return client.query(
+      query,
+      beer.name !== undefined ? beer.name : latestBeer.name,
+      beer.brand !== undefined ? beer.brand : latestBeer.brand,
+      beer.is_premium !== undefined ? beer.is_premium : latestBeer.is_premium,
+      id
+    );
+  }
 }
 
 export default new BeerRepo();
