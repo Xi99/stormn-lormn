@@ -1,15 +1,15 @@
-import beerRepo from "../repositories/userRepo.js";
+import userRepo from "../repositories/userRepo.js";
 
-export const getBeers = async () => {
-  const beers = await beerRepo.selectAll();
+export const getUsers = async () => {
+  const users = await userRepo.selectAll();
 
   var result = new Array();
 
-  beers.rows.map((beer) => {
+  users.rows.map((user) => {
     var obj = new Object();
 
-    beers.rowDescription.columns.map((el, i) => {
-      obj[el.name] = beer[i];
+    users.rowDescription.columns.map((el, i) => {
+      obj[el.username] = user[i];
     });
     result.push(obj);
   });
@@ -17,51 +17,54 @@ export const getBeers = async () => {
   return result;
 };
 
-export const getBeer = async (beerId) => {
-  const beers = await beerRepo.selectById(beerId);
+export const getUser = async (user_id) => {
+  const users = await userRepo.selectById(user_id);
 
   var obj = new Object();
-  beers.rows.map((beer) => {
-    beers.rowDescription.columns.map((el, i) => {
-      obj[el.name] = beer[i];
+  users.rows.map((user) => {
+    users.rowDescription.columns.map((el, i) => {
+      obj[el.username] = user[i];
     });
   });
 
   return obj;
 };
 
-export const createBeer = async (beerData) => {
-  const newBeer = {
-    name: String(beerData.name),
-    brand: String(beerData.brand),
-    is_premium: "is_premium" in beerData ? Boolean(beerData.is_premium) : false,
+export const createUser = async (userData) => {
+  const newUser = {
+    username: String(userData.username),
+    brand: String(userData.brand),
+    is_premium: "is_premium" in userData ? Boolean(userData.is_premium) : false,
     registration_date: new Date(),
   };
 
-  await beerRepo.create(newBeer);
+  await userRepo.create(newUser);
 
-  return newBeer.id;
+  return newUser.id;
 };
 
-export const updateBeer = async (beerId, beerData) => {
-  const beer = await getBeer(beerId);
+export const updateUser = async (user_id, userData) => {
+  const user = await getUser(user_id);
 
-  if (Object.keys(beer).length === 0 && beer.constructor === Object) {
-    throw new Error("Beer not found");
+  if (Object.keys(user).length === 0 && user.constructor === Object) {
+    throw new Error("User not found");
   }
 
-  const updatedBeer = {
-    name: beerData.name !== undefined ? String(beerData.name) : beer.name,
-    brand: beerData.brand !== undefined ? String(beerData.brand) : beer.brand,
-    is_premium:
-      beerData.is_premium !== undefined
-        ? Boolean(beerData.is_premium)
-        : beer.is_premium,
+  const updatedUser = {
+    username:
+      userData.username !== undefined
+        ? String(userData.username)
+        : user.username,
+    // brand: userData.brand !== undefined ? String(userData.brand) : user.brand,
+    // is_premium:
+    //   userData.is_premium !== undefined
+    //     ? Boolean(userData.is_premium)
+    //     : user.is_premium,
   };
 
-  beerRepo.update(beerId, updatedBeer);
+  userRepo.update(user_id, updatedUser);
 };
 
-export const deleteBeer = async (beerId) => {
-  beerRepo.delete(beerId);
+export const deleteUser = async (user_id) => {
+  userRepo.delete(user_id);
 };
