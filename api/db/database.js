@@ -9,13 +9,15 @@ async function main() {
   const client = new Client({
     user: "postgres",
     database: "stormn",
-    hostname: "localhost",
     password: "postgres",
+    hostname: "localhost",
     port: 5432,
   });
 
   await client.connect();
+  console.log("Connected");
+  await client.end();
 }
 
-export default main();
-// new Database().client;
+// export default main();
+main();
