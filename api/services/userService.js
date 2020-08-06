@@ -1,6 +1,7 @@
 import userRepo from "../repositories/userRepo.js";
 
 export const getUsers = async () => {
+  console.log("in userService.js at getUsers()");
   const users = await userRepo.selectAll();
 
   var result = new Array();

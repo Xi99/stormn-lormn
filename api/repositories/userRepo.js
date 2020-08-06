@@ -10,6 +10,7 @@ class UserRepo {
   }
 
   selectAll() {
+    console.log("In userRepo at selectAll()");
     return client.query("SELECT * FROM users ORDER BY user_id");
   }
 
