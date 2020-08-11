@@ -10,7 +10,6 @@ app.use(cors());
 app.use(bp.json());
 // app.get(req, res) ...
 app.get("/users", (req, res) => {
-  console.log("Still in index.js");
   pgdb.getAllUsers().then((results) => res.send(results));
 });
 

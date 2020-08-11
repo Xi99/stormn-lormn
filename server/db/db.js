@@ -1,14 +1,14 @@
 const { Pool } = require("pg");
+const pw = require("../../plsIgnore/dbpw.js");
 const pool = new Pool({
   database: "stormn",
   user: "sean",
-  password: "Dodgers12",
+  password: pw.pw,
   port: 5433,
 });
 // use query's here
 
 const getAllUsers = () => {
-  console.log("In getAllUsers");
   return pool.query("SELECT * FROM users").then((res) => res.rows);
 };
 
