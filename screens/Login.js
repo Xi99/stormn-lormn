@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -13,8 +13,40 @@ import { TextInput } from "react-native-gesture-handler";
 // import {AuthContext} from '../contexts/AuthContext';
 
 export default function Login({ navigation }) {
+  const [username, setUsername] = useState("Not Fred");
   const handleLogin = () => {
     console.warn("Logged in");
+  };
+
+  // useEffect(() => {
+  //   console.log("loading Users...");
+  //   getUsers();
+  // }, []);
+
+  const getUsers = () => {
+    fetch(`http://192.168.0.10:8080/users`, {
+      // fetch("https://swapi.dev/api/people/1/", {
+      method: "GET",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        Authorization: `BasicAuth`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      // .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error(response.status);
+        return response.json();
+      })
+      .then((data) => setUsername(data[0].username))
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
   };
 
   return (
@@ -59,7 +91,8 @@ export default function Login({ navigation }) {
       />
 
       <View style={{ width: "80%", alignSelf: "center", marginTop: 10 }}>
-        <Button title="Greatness Awaits" color="orange" onPress={handleLogin} />
+        <Button title="Greatness Awaits" color="orange" onPress={getUsers} />
+        <Text>{username}</Text>
       </View>
     </View>
   );
