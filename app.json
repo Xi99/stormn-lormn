@@ -22,10 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lormaniac.stormnlormn"
     },
     "android": {
       "package": "com.lormaniac.stormnlormn"
-    }
+    },
+    "sdkVersion": "37.0.0"
   }
 }
