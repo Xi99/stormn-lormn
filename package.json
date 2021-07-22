@@ -30,7 +30,7 @@
     "react-native-screens": "^2.10.1",
     "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7",
-    "xlsx": "^0.16.5"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
